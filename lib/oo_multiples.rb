@@ -1,19 +1,19 @@
 # Enter your object-oriented solution here!
 class Multiples 
-    attr_accessor :limit
+    attr_reader :limit, :multiples
 
     def initialize(limit)
         @limit = limit
+        @multiples = collect_multiples
     end
 
     def collect_multiples
-        multiples = (1...@limit).to_a
-        return multiples.select { |num|
+        (1...limit).to_a.select { |num|
             num % 3 === 0 || num % 5 === 0
         }
     end
 
     def sum_multiples
-        self.collect_multiples.reduce(:+)
+        multiples.reduce(:+)
     end
 end
